@@ -5,10 +5,12 @@ import os
 N_NODES = 2
 RESOURCES = {
     "image": "public.ecr.aws/p7g1e3j4/deepspeed:6", 
-    "gpu": 1,
+    # "gpu": 1,
     "memory": "12000",
     "port": 22,
-    "cpu": 2
+    "cpu": 2,
+    # "node_selector": "outerbounds.co/provider=azure",
+    # "gpu_vendor": "nvidia"
 }
 
 class MultinodeTrainerDirSync(FlowSpec):

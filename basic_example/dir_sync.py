@@ -119,7 +119,6 @@ class DirectorySyncManager:
                 tar.extractall(path=os.path.dirname(self.root))
             os.remove(f"{self.root}.tar.gz")
         
-
     def download(self, all_nodes=False):
         if all_nodes:
             tar_balls = self._download_from_s3(all_nodes=all_nodes)
@@ -153,7 +152,6 @@ class DirectorySyncManager:
             self.start()
 
     def stop(self):
-        print("Stopping the directory sync manager and doing final sync...")
         self.stop_event.set()
         self._check_and_push()
         if hasattr(self, '_thread'):
