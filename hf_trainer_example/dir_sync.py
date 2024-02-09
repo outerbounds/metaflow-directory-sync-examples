@@ -20,7 +20,7 @@ class DirectorySyncManager:
     def _check_directory_last_update(self) -> bool:
         """
         Recursively check the last update time for any file of the directory.
-        Rule: If any file has changed since last check, then restart the process.
+        Rule: If any file has changed since last check, then return True to resync.
         """
         modified_since_last_check = False
         if not os.path.exists(self.root):
@@ -107,7 +107,7 @@ class DirectorySyncManager:
         """
         Extract the tar file to the root of the directory.
         If `path` is specified, assumed to be a file path and extract to that location.
-        The use case for path is
+        The use case for path is when downloading all checkpoints from many nodes nodes.
         """
         if path:
             with open(path, "wb") as f:
